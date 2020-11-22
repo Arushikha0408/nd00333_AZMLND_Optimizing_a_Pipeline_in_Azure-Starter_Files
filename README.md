@@ -27,11 +27,11 @@ These were the steps involved in the pipeline (which can be found in the `train.
 
 After launching a workspace and cpu compute cluster in Azure ML, Hyperdrive was utilized in order to identify the best possible hyperparameter values for our model. The configuration for this can be found in `udacity-project.ipynb`, but here are the details as well -
 
-The `RandomParameterSampling` was utilized to randomly select hyperparameter values. For `C`, I chose a uniform distribution (0.1, 0.9), and for `max_iter` I gave it a choice of 4 values - (25, 50, 75, 100). Random sampling, as the name suggests, randomly selects hyperparameter values from a search space defined by us. This can often help in doing a sort of preliminary search and then refining the values to try and improve the model.
+The `RandomParameterSampling` was utilized to randomly select hyperparameter values. For `C`, I chose a uniform distribution (0.1, 1.0), and for `max_iter` I gave it a choice of 4 values - (10, 20, 40, 50). Random sampling, as the name suggests, randomly selects hyperparameter values from a search space defined by us. This can often help in doing a sort of preliminary search and then refining the values to try and improve the model.
 
 **Benefits** - `RandomParameterSampling` allows us to define hyperparameters from either a discrete or continuous distribution. As can be seen from the hyperparameters required for this particular model, this was important - continuous range for `C` and discrete values for `max_iter`.
 
-For the Early Stopping policy I selected the `BanditPolicy` with an `evaluation_interval` of 2 and a `slack_factor` of 0.5.
+For the Early Stopping policy I selected the `BanditPolicy` with an `evaluation_interval` of 2 and a `slack_factor` of 0.2.
 
 **Benefits** - The `BanditPolicy`is useful for early termination when the primary metric (accuracy, in our case) is not within the `slack_factor` value in comparison to the best performing model/run. This helps make the process more efficent and cost-effective. 
 
@@ -80,10 +80,4 @@ However, given what I learned, I think a reasonable approach is to first use Aut
 
 There were just one main issue I faced with the project -
 
-- Sometimes, it gave me messages that it couldn't find the primary metric even though the metric matched (with no spelling errors). There was no way to effectively debug this
-
-Other than that, you will notice an error in the Notebook - 
-
-> NameError: name 'RunDetails' is not defined
-
-I had to restart the Kernel for the AutoML part, and I didn't run the cell that imported `RunDetails`. I didn't want to run AutoML again, so I have left the error as is for now. I have run it in the next cell, however.
+- To run the HyperDriveConfig as the my code was not able to find train.py module under training directory. Needed to debug by seeing all child logs to understand the major problem. Later it was sorted out.
