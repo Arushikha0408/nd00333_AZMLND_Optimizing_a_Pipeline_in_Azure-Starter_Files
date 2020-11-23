@@ -76,7 +76,7 @@ However, given what I learned, I think a reasonable approach is to first use Aut
 ## Proof of cluster clean up
 - I did include the code in the Notebook and it ran without issues.
 - Attached image of deletion confirmation of cluster. 
-![Cluster Deletion](https://github.com/Arushikha0408/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/cluster-deletion-screenshot.png)
+![Cluster Deletion](https://github.com/Arushikha0408/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/cluster-deletion-screenshot.PNG)
 
 ## Other issues (These have now been resolved)
 
